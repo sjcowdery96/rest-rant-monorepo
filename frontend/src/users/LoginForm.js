@@ -17,8 +17,14 @@ function LoginForm() {
 
     async function handleSubmit(e) {
         e.preventDefault()
-       
-
+        //sends to DB
+        const loginSuccess = fetch(`http://localhost:${process.env.PORT}/users`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(credentials),
+        })
+        //welcomes the new or returning user (all logic handled in server-side)
+        console.log("Welcome, " + loginSuccess.email)
     }
 
     return (

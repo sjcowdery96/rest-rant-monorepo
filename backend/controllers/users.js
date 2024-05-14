@@ -28,7 +28,9 @@ router.post('/', async (req, res) => {
         //save user with email and hashed PW
         const user = await User.create({
             email: req.body.email,
-            password: hashedPW
+            password: hashedPW,
+            firstName: req.body.firstName,
+            LastName: req.body.lastName,
         })
         //return the user details
         res.json(user)

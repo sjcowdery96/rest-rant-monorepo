@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const db = require("../models")
-const bcrypt = require('bcrypt') 
+const bcrypt = require('bcrypt')
 
 const { User } = db
 
@@ -31,6 +31,7 @@ router.post('/', async (req, res) => {
             password: hashedPW,
             firstName: req.body.firstName,
             LastName: req.body.lastName,
+            role: 'reviewer'
         })
         //return the user details
         res.json(user)

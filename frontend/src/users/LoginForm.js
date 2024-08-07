@@ -25,6 +25,18 @@ function LoginForm() {
         })
         //welcomes the new or returning user (all logic handled in server-side)
         console.log("Welcome, " + loginSuccess.email)
+        //sets token and user into data
+        const data = await response.json()
+        //log token
+        console.log(data.token)
+        //set to local storage and React context
+        if (response.status === 200) {
+            setCurrentUser(data.user)
+            localStorage.setItem('token', data.token)
+            history.push(`/`)
+        } else {
+            setErrorMessage(data.message)
+        }
     }
 
     return (
